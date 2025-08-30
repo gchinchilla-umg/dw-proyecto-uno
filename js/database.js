@@ -173,14 +173,17 @@ function insertSampleData() {
     // Sample resident
     db.run(`
         INSERT OR IGNORE INTO Inquilino (dpi, primer_nombre, primer_apellido, fecha_nacimiento, numero_casa) VALUES 
-        ('1234567890123', 'Juan', 'Pérez', '1980-01-01', 'A101');
+        ('1234567890123', 'Juan', 'Pérez', '1980-01-01', 'A101'),
+        ('1234567890124', 'Luis', 'Pérez', '1990-01-01', 'A102'),;
     `);
 
     // Sample payments - Add current month payment for testing
     db.run(`
         INSERT OR IGNORE INTO PagoDeCuotas (numero_casa, anio_cuota, mes_cuota, fecha_pago) VALUES 
         ('A101', 2025, 8, '2025-08-01'),
-        ('A101', ${currentYear}, ${currentMonth}, '${currentYear}-${currentMonth.toString().padStart(2, '0')}-01');
+        ('A101', ${currentYear}, ${currentMonth}, '${currentYear}-${currentMonth.toString().padStart(2, '0')}-01'),
+        ('A102', 2025, 2, '2025-07-01'),
+        ('A102', ${currentYear}, ${currentMonth}, '${currentYear}-${currentMonth.toString().padStart(2, '0')}-01');
     `);
 }
 
