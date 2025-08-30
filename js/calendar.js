@@ -1,18 +1,31 @@
 // Wait for DOM content to load
 document.addEventListener('DOMContentLoaded', async () => {
-    // Initialize database
-    const initialized = await window.dbOperations.initDatabase();
-    if (!initialized) {
-        console.error('Failed to initialize database');
-        return;
-    }
+    // Show loading indicator
+    showLoadingIndicator();
+    
+    try {
+        // Initialize database
+        const initialized = await window.dbOperations.initDatabase();
+        if (!initialized) {
+            console.error('Failed to initialize database');
+            showErrorMessage('Error al cargar la base de datos. Por favor, recarga la página.');
+            return;
+        }
 
-    // Set up calendar controls
-    setupCalendarControls();
+        // Set up calendar controls
+        await setupCalendarControls();
+        
+        // Hide loading indicator
+        hideLoadingIndicator();
+    } catch (error) {
+        console.error('Error during initialization:', error);
+        showErrorMessage('Error al inicializar el calendario. Por favor, recarga la página.');
+        hideLoadingIndicator();
+    }
 });
 
 // Set up calendar controls and initial display
-function setupCalendarControls() {
+async function setupCalendarControls() {
     const monthSelector = document.getElementById('month-selector');
     const yearSelector = document.getElementById('year-selector');
     const modal = document.getElementById('event-modal');
@@ -33,15 +46,15 @@ function setupCalendarControls() {
     yearSelector.value = currentDate.getFullYear();
 
     // Event listeners
-    monthSelector.addEventListener('change', updateCalendar);
-    yearSelector.addEventListener('change', updateCalendar);
+    monthSelector.addEventListener('change', async () => await updateCalendar());
+    yearSelector.addEventListener('change', async () => await updateCalendar());
     closeModal.addEventListener('click', () => modal.style.display = 'none');
     window.addEventListener('click', (e) => {
         if (e.target === modal) modal.style.display = 'none';
     });
 
     // Initial calendar display
-    updateCalendar();
+    await updateCalendar();
 }
 
 // Update calendar display
@@ -60,8 +73,11 @@ async function updateCalendar() {
     const startingDay = firstDay.getDay();
 
     // Get events for the month
-    const events = window.dbOperations.getCalendarEvents(month + 1, year);
+    console.log(`Loading events for month: ${month + 1}, year: ${year}`);
+    const events = await window.dbOperations.getCalendarEvents(month + 1, year);
+    console.log('Events loaded:', events);
     const eventMap = createEventMap(events);
+    console.log('Event map created:', eventMap);
 
     // Generate calendar HTML
     let calendarHTML = '';
@@ -132,6 +148,53 @@ function showEventDetails(titulo, descripcion, fecha) {
     descriptionElement.textContent = descripcion;
     dateElement.textContent = formattedDate;
     modal.style.display = 'block';
+}
+
+// Show loading indicator
+function showLoadingIndicator() {
+    const calendarSection = document.querySelector('.calendar-section');
+    const loadingDiv = document.createElement('div');
+    loadingDiv.id = 'loading-indicator';
+    loadingDiv.className = 'alert';
+    loadingDiv.style.backgroundColor = '#3498db';
+    loadingDiv.style.color = 'white';
+    loadingDiv.innerHTML = `
+        <div style="display: flex; align-items: center; justify-content: center; gap: 10px;">
+            <div style="width: 20px; height: 20px; border: 2px solid #ffffff; border-top: 2px solid transparent; border-radius: 50%; animation: spin 1s linear infinite;"></div>
+            Cargando calendario...
+        </div>
+        <style>
+            @keyframes spin {
+                0% { transform: rotate(0deg); }
+                100% { transform: rotate(360deg); }
+            }
+        </style>
+    `;
+    calendarSection.insertBefore(loadingDiv, calendarSection.firstChild);
+}
+
+// Hide loading indicator
+function hideLoadingIndicator() {
+    const loadingIndicator = document.getElementById('loading-indicator');
+    if (loadingIndicator) {
+        loadingIndicator.remove();
+    }
+}
+
+// Show error message
+function showErrorMessage(message) {
+    const calendarSection = document.querySelector('.calendar-section');
+    const errorDiv = document.createElement('div');
+    errorDiv.className = 'alert alert-error';
+    errorDiv.textContent = message;
+    calendarSection.insertBefore(errorDiv, calendarSection.firstChild);
+    
+    // Auto-remove error message after 5 seconds
+    setTimeout(() => {
+        if (errorDiv.parentNode) {
+            errorDiv.remove();
+        }
+    }, 5000);
 }
 
 // Make showEventDetails available globally

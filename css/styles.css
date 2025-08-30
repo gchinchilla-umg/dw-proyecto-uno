@@ -1,4 +1,4 @@
-/* Reset and base styles */
+/* Se aplica el reset para el navegador */
 * {
     margin: 0;
     padding: 0;
@@ -6,7 +6,7 @@
 }
 
 :root {
-    --primary-color: #2c3e50;
+    --primary-color: #2c3e50; 
     --secondary-color: #34495e;
     --accent-color: #3498db;
     --text-color: #333;
@@ -55,14 +55,14 @@ body {
     background-color: var(--accent-color);
 }
 
-/* Main content */
+/* Main */
 main {
     padding: 1rem;
     max-width: 1200px;
     margin: 0 auto;
 }
 
-/* Hero section */
+/* Hero */
 .hero {
     text-align: center;
     padding: 3rem 1rem;
@@ -101,7 +101,7 @@ h2 {
     font-size: 1.5rem;
 }
 
-/* Calendar styles */
+/* Calendar  */
 .calendar-controls {
     margin-bottom: 1rem;
     display: flex;
@@ -162,7 +162,7 @@ h2 {
     background-color: #2980b9;
 }
 
-/* Form styles */
+/* Form */
 .form-group {
     margin-bottom: 1rem;
 }
@@ -208,7 +208,7 @@ h2 {
     background-color: #dcdde1;
 }
 
-/* Table styles */
+/* Table */
 table {
     width: 100%;
     border-collapse: collapse;
@@ -226,7 +226,7 @@ th {
     font-weight: bold;
 }
 
-/* Modal styles */
+/* Modal */
 .modal {
     display: none;
     position: fixed;
@@ -254,12 +254,12 @@ th {
     cursor: pointer;
 }
 
-/* Utility classes */
+/* Utility  */
 .hidden {
     display: none;
 }
 
-/* Alert styles */
+/* Alert */
 .alert {
     padding: 1rem;
     border-radius: 4px;
@@ -281,13 +281,13 @@ th {
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
-/* Resultado consulta styles */
+/* Resultado consulta */
 .resultado-consulta {
     margin-top: 2rem;
     min-height: 60px;
 }
 
-/* Responsive design */
+/* Media queries */
 @media (min-width: 768px) {
     .main-nav {
         display: flex;
@@ -324,7 +324,7 @@ th {
     }
 }
 
-/* News section styles */
+/* News section */
 .news-container {
     display: grid;
     gap: 1.5rem;
@@ -343,7 +343,7 @@ th {
     margin-bottom: 0.5rem;
 }
 
-/* Gallery styles */
+/* Gallery  */
 .gallery-container {
     display: grid;
     gap: 1rem;
@@ -357,11 +357,11 @@ th {
 
 .gallery-item img {
     width: 100%;
-    height: auto;
+    height: 180px;
     display: block;
 }
 
-/* Team section styles */
+/* Team */
 .team-members {
     display: grid;
     gap: 2rem;
@@ -394,7 +394,7 @@ th {
     margin-bottom: 0.5rem;
 }
 
-/* About section styles */
+/* About  */
 .about-content {
     background-color: white;
     padding: 1.5rem;
@@ -416,7 +416,7 @@ th {
     margin-bottom: 0.5rem;
 }
 
-/* Footer styles */
+/* Footer  */
 footer {
     background-color: var(--primary-color);
     color: white;
