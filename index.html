@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residencial Alamedas de Santa Ana</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="lib/sql-wasm.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-brand">Alamedas de Santa Ana</div>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active">Inicio</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="consulta.html">Consulta de Pagos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Bienvenidos a Alamedas de Santa Ana</h1>
+            <p>Su hogar en el corazón de Santa Ana</p>
+        </section>
+
+        <section class="team" id="equipo">
+            <h2>Nuestro Equipo</h2>
+            <div class="team-members">
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Foto de Miembro del Equipo">
+                    <h3>Juan Pérez</h3>
+                    <p>Administrador</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Foto de Miembro del Equipo">
+                    <h3>María López</h3>
+                    <p>Asistente Administrativa</p>
+                </div>
+                <div class="team-member">
+                    <img src="https://via.placeholder.com/150" alt="Foto de Miembro del Equipo">
+                    <h3>Carlos Rodríguez</h3>
+                    <p>Seguridad</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="about" id="sobre-nosotros">
+            <h2>Sobre Nuestro Residencial</h2>
+            <div class="about-content">
+                <p>Residencial Alamedas de Santa Ana es una comunidad exclusiva que ofrece un ambiente seguro y tranquilo para nuestros residentes. Ubicado en el corazón de Santa Ana, nuestro residencial cuenta con amplias áreas verdes, piscina, áreas comunes para eventos y un sistema de seguridad las 24 horas.</p>
+                
+                <p>Nuestro compromiso es brindar la mejor calidad de vida a nuestros residentes, manteniendo las instalaciones en óptimas condiciones y fomentando un ambiente de comunidad y respeto entre todos los vecinos.</p>
+                
+                <h3>Ubicación</h3>
+                <p>Estamos ubicados en la zona 5 de Santa Ana, a solo 10 minutos del centro comercial y con fácil acceso a las principales vías de comunicación.</p>
+                
+                <h3>Servicios</h3>
+                <ul>
+                    <li>Seguridad 24/7</li>
+                    <li>Mantenimiento de áreas comunes</li>
+                    <li>Recolección de basura</li>
+                    <li>Áreas recreativas</li>
+                    <li>Salón de eventos</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="gallery">
+            <h2>Galería</h2>
+            <div class="gallery-container">
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300?text=Áreas+Verdes" alt="Áreas Verdes">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300?text=Piscina" alt="Piscina">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300?text=Área+Común" alt="Área Común">
+                </div>
+                <div class="gallery-item">
+                    <img src="https://via.placeholder.com/400x300?text=Entrada+Principal" alt="Entrada Principal">
+                </div>
+            </div>
+        </section>
+
+        <section class="news" id="noticias">
+            <h2>Últimas Noticias</h2>
+            <div class="news-container">
+                <!-- News will be loaded dynamically from database -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Residencial Alamedas de Santa Ana. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/database.js"></script>
+    <script src="js/news.js"></script>
+</body>
+</html>

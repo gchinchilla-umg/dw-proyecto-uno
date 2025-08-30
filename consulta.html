@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Pagos - Alamedas de Santa Ana</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="lib/sql-wasm.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-brand">Alamedas de Santa Ana</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="calendario.html">Calendario</a></li>
+                <li><a href="consulta.html" class="active">Consulta de Pagos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="consulta-section">
+            <h1>Consulta de Estado de Pagos</h1>
+            
+            <form id="consulta-form" class="consulta-form">
+                <div class="form-group">
+                    <label for="dpi">DPI:</label>
+                    <input type="text" id="dpi" name="dpi" required 
+                           pattern="[0-9]{13}" 
+                           title="El DPI debe contener 13 dígitos">
+                </div>
+
+                <div class="form-group">
+                    <label for="numero-casa">Número de Casa:</label>
+                    <input type="text" id="numero-casa" name="numero-casa" required
+                           pattern="[A-Za-z0-9]+" 
+                           title="Ingrese un número o código válido">
+                </div>
+
+                <div class="form-group">
+                    <label for="primer-nombre">Primer Nombre:</label>
+                    <input type="text" id="primer-nombre" name="primer-nombre" required
+                           pattern="[A-Za-zÁáÉéÍíÓóÚúÑñ]+" 
+                           title="Ingrese solo letras">
+                </div>
+
+                <div class="form-group">
+                    <label for="primer-apellido">Primer Apellido:</label>
+                    <input type="text" id="primer-apellido" name="primer-apellido" required
+                           pattern="[A-Za-zÁáÉéÍíÓóÚúÑñ]+" 
+                           title="Ingrese solo letras">
+                </div>
+
+                <div class="form-group">
+                    <label for="fecha-nacimiento">Fecha de Nacimiento:</label>
+                    <input type="date" id="fecha-nacimiento" name="fecha-nacimiento" required>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Consultar Estado</button>
+                    <button type="button" id="btn-historial" class="btn-secondary">Ver Historial</button>
+                </div>
+            </form>
+
+            <div id="resultado-consulta" class="resultado-consulta">
+                <!-- Aquí se mostrará el resultado de la consulta -->
+            </div>
+
+            <!-- Sección de historial de pagos -->
+            <div id="historial-section" class="historial-section hidden">
+                <h2>Historial de Pagos</h2>
+                
+                <div class="filtros-historial">
+                    <div class="form-group">
+                        <label for="fecha-inicio">Desde:</label>
+                        <input type="date" id="fecha-inicio" name="fecha-inicio">
+                    </div>
+                    <div class="form-group">
+                        <label for="fecha-fin">Hasta:</label>
+                        <input type="date" id="fecha-fin" name="fecha-fin">
+                    </div>
+                    <button type="button" id="btn-filtrar" class="btn-primary">Filtrar</button>
+                </div>
+
+                <div id="tabla-historial" class="tabla-historial">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Fecha de Pago</th>
+                                <th>Mes</th>
+                                <th>Año</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historial-body">
+                            <!-- El historial se cargará dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Residencial Alamedas de Santa Ana. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/database.js"></script>
+    <script src="js/consulta.js"></script>
+</body>
+</html>

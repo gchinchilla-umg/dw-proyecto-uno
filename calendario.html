@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendario - Alamedas de Santa Ana</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="lib/sql-wasm.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="main-nav">
+            <div class="nav-brand">Alamedas de Santa Ana</div>
+            <ul class="nav-links">
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="calendario.html" class="active">Calendario</a></li>
+                <li><a href="consulta.html">Consulta de Pagos</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="calendar-section">
+            <h1>Calendario de Actividades</h1>
+            
+            <div class="calendar-controls">
+                <select id="month-selector">
+                    <option value="0">Enero</option>
+                    <option value="1">Febrero</option>
+                    <option value="2">Marzo</option>
+                    <option value="3">Abril</option>
+                    <option value="4">Mayo</option>
+                    <option value="5">Junio</option>
+                    <option value="6">Julio</option>
+                    <option value="7">Agosto</option>
+                    <option value="8">Septiembre</option>
+                    <option value="9">Octubre</option>
+                    <option value="10">Noviembre</option>
+                    <option value="11">Diciembre</option>
+                </select>
+                
+                <select id="year-selector">
+                    <!-- Years will be populated by JavaScript -->
+                </select>
+            </div>
+
+            <div class="calendar">
+                <div class="calendar-header">
+                    <div>Dom</div>
+                    <div>Lun</div>
+                    <div>Mar</div>
+                    <div>Mié</div>
+                    <div>Jue</div>
+                    <div>Vie</div>
+                    <div>Sáb</div>
+                </div>
+                <div id="calendar-grid" class="calendar-grid">
+                    <!-- Calendar days will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal for event details -->
+        <div id="event-modal" class="modal">
+            <div class="modal-content">
+                <span class="close-modal">&times;</span>
+                <h2 id="event-title"></h2>
+                <p id="event-description"></p>
+                <p id="event-date"></p>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Residencial Alamedas de Santa Ana. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/database.js"></script>
+    <script src="js/calendar.js"></script>
+</body>
+</html>
